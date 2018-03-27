@@ -14,7 +14,8 @@ class MenuController
     p "3 - Create an entry"
     p "4 - Search for an entry"
     p "5 - Import entries for a CSV"
-    p "6 - Exit"
+    p "6 - RED BUTTON: delete the internet!!"
+    p "7 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -41,6 +42,10 @@ class MenuController
         read_csv
         main_menu
       when 6
+        system "clear"
+        delete_the_internet
+        main_menu
+      when 7
         puts "Good-bye!"
         exit(0)
       else
@@ -125,6 +130,16 @@ class MenuController
     rescue
       puts "#{file_name} is not a valid CSV file, please entre the name of a valid CSV file"
       read_csv
+    end
+  end
+
+  def delete_the_internet
+    p "We cannot delte the internet... yet..."
+    p "But we can DELETE THE WHOLE Address Book"
+    p "Are you sure you want to delete all entries? (y/n)"
+    option = gets.chomp
+    if option == "y" || option == "Y"
+      address_book.nuke
     end
   end
 
